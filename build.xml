@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="165314034_Service_rsku7" default="default" basedir=".">
-    <description>Builds, tests, and runs the project 165314034_Service_rsku7.</description>
+<project name="165314034_Platform_rsku_webservice" default="default" basedir=".">
+    <description>Builds, tests, and runs the project 165314034_Platform_rsku_webservice.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

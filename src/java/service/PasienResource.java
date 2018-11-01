@@ -88,7 +88,7 @@ public class PasienResource {
         Pasien pasien = gson.fromJson(data, Pasien.class);
         PasienHelper helper = new PasienHelper();
         helper.addNewPasien(
-            pasien.getNoRm(),
+            pasien.getNik(),
             pasien.getNama(),
             pasien.getAlamat(),
             pasien.getNik(),

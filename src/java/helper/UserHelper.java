@@ -5,7 +5,7 @@
  */
 package helper;
 
-import util.BernadNewHibernateUtil;
+import util.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -19,7 +19,7 @@ public class UserHelper {
 
     public User cariUser(String email) {
         //create session
-        Session session = BernadNewHibernateUtil.getSessionFactory().openSession();
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
         //create String query
         String query = "from User u where u.email=:email";
         Query q = session.createQuery(query);

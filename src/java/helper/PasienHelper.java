@@ -20,11 +20,13 @@ public class PasienHelper {
     }
 
     public List<Pasien> getAllPasien() {
+        List<Pasien> result = null;
         Session session = NewHibernateUtil.getSessionFactory().openSession();
-        String query = "from Pasien";
+        String query = "from Pasien p";
         Query q = session.createQuery(query);
-        List<Pasien> list = q.list();
-        return list;
+        result = q.list();
+        session.close();
+        return result;
     }
 
     public void addNewPasien(String noRm, String nama, String alamat,
