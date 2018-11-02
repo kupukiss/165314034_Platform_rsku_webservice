@@ -17,7 +17,19 @@ public class UserHelper {
 
     }
 
-    public User cariUser(String email) {
+    
+    
+    public User getUser<User> getAllUser() {
+        List<User> result = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        String query = "from User p";
+        Query q = session.createQuery(query);
+        result = q.list();
+        session.close();
+        return result;
+    }
+    
+    public User cariUser(String username, String password) {
         //create session
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         //create String query
@@ -37,18 +49,19 @@ public class UserHelper {
         }
     }
 
-    public boolean login(String email, String password) {
-        User user = this.cariUser(email);
-        if (user != null) {
-            if (user.getPassword().equals(password)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+//    public boolean login(String email, String password) {
+//        User user = this.cariUser(email);
+//        if (user != null) {
+//            if (user.getPassword().equals(password)) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } else {
+//            return false;
+//        }
+//    }
+    
 }
 
 
