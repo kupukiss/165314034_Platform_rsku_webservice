@@ -5,14 +5,12 @@
  */
 package test1;
 
+import com.google.gson.Gson;
 import helper.UserHelper;
-import pojos.User;
 
 public class TestUser1 {
     public static void main(String[] args) {
-        UserHelper helper = new UserHelper();
-        User cari = helper.getUser("puspa@usd.ac.id");
-        String pass = cari.getPassword();
-        System.out.print("Password : "+pass);
+        helper.UserHelper u = new UserHelper();
+        System.out.println(new Gson().toJson(u.login("puspa@usd.ac.id", "123456789")));
     }
 }
