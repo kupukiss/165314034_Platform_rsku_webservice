@@ -39,7 +39,9 @@ public class User  implements java.io.Serializable {
         this.password = password;
     }
 
-
+    public int compareTo(User user){
+        return this.email.compareTo(user.email);
+    }
 
 
 }

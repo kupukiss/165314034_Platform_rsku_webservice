@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import pojos.User;
 
 /**
  * REST Web Service
@@ -54,15 +55,14 @@ public class UserResource {
 //    }
     
     @GET
-    @Path("login")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response login(@QueryParam("email") String email, 
-                          @QueryParam("password") String password){
+    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Response getLogin(@QueryParam("email") String email, 
+                             @QueryParam("password") String password){
         UserHelper helper = new UserHelper();
-        boolean hasil = helper.login(email, password);
+        User user = helper.getUser(password, email);
         Gson gson = new Gson();
         return Response.status(200)
-                .entity(gson.toJson(hasil))
+                .entity(gson.toJson(user))
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Methods",
                         "GET,POST,HEAD,OPTIONS,PUT")
