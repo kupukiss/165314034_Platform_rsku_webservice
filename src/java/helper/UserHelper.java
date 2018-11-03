@@ -12,38 +12,7 @@ import pojos.User;
 
 public class UserHelper {
 
-//    public UserHelper() {
-//
-//    }
-//
-//    public List<User> getAllUser() {
-//        List<User> result = null;
-//        Session session = NewHibernateUtil.getSessionFactory().openSession();
-//        String query = "from User u";
-//        Query q = session.createQuery(query);
-//        result = q.list();
-//        session.close();
-//        return result;
-//    }
-//
-//    public User getUser(String username, String password) {
-//        List<User> list = this.getAllUser();
-//        Collections.sort(list);
-//        User user = new User(username, password);
-//        int index = Collections.binarySearch(list, user);
-//
-//        if (index < 0) {
-//            return null;
-//        } else {
-//            User result = list.get(index);
-//            if (password.equals(result.getPassword())) {
-//                System.out.println("Password = " + password);
-//                return user;
-//            } else {
-//                return null;
-//            }
-//        }
-//    }
+
     public User login(String email, String password) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         String q = "From User a where a.email=:email AND a.password =:password";
