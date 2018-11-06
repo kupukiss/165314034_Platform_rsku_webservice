@@ -58,7 +58,7 @@ public class KlinikResource {
     @GET
     @Path("getKlinik")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLocation() {
+    public Response getKlinik() {
         KlinikHelper helper = new KlinikHelper();
         List<Klinik> list = helper.getKlinik();
         Gson gson = new Gson();

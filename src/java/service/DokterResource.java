@@ -57,7 +57,7 @@ public class DokterResource {
     @GET
     @Path("getDokter")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLocation(){
+    public Response getDokter(){
         DokterHelper helper = new DokterHelper();
         List<Dokter> list = helper.getDokter();
         Gson gson = new Gson();
