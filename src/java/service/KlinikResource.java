@@ -8,10 +8,12 @@ package service;
 import com.google.gson.Gson;
 import helper.KlinikHelper;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -77,5 +79,22 @@ public class KlinikResource {
                 .header("Access-Preflight-Maxage", "2")
                 .build();
     }
-
+    
+    @POST
+    @Path("addKlinik")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addNewKlinik(String data) {
+        Gson gson = new Gson();
+        Klinik klinik = gson.fromJson(data, Klinik.class);
+        KlinikHelper helper = new KlinikHelper();
+        helper.addNewKlinik(
+            klinik.getIdKlinik(),
+            klinik.getNama(),
+            klinik.getSpesialis());
+        
+        return Response
+                .status(200)
+                .entity(klinik)
+                .build();
+    }
 }

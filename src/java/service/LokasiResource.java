@@ -8,10 +8,12 @@ package service;
 import com.google.gson.Gson;
 import helper.LokasiHelper;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,6 +38,7 @@ public class LokasiResource {
 
     /**
      * Retrieves representation of an instance of User.UserResource
+     *
      * @return an instance of java.lang.String
      */
     @GET
@@ -47,17 +50,17 @@ public class LokasiResource {
 
     /**
      * PUT method for updating or creating an instance of UserResource
+     *
      * @param content representation for the resource
      */
 //    @PUT
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public void putJson(String content) {
 //    }
-    
     @GET
     @Path("getLocation")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLocation(){
+    public Response getLocation() {
         LokasiHelper helper = new LokasiHelper();
         List<Location> list = helper.getLocation();
         Gson gson = new Gson();
@@ -72,10 +75,28 @@ public class LokasiResource {
                         "Access-Control-Allow-Origin,Access-Control-Allow-Credentials")
                 .header("Access-Support-Credentials",
                         "true")
-                .header("Access-Control-Max-Age","2")
+                .header("Access-Control-Max-Age", "2")
                 .header("Access-Preflight-Maxage", "2")
                 .build();
     }
 
+    @POST
+    @Path("addLocation")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addNewLocation(String data) {
+        Gson gson = new Gson();
+        Location location = gson.fromJson(data, Location.class);
+        LokasiHelper helper = new LokasiHelper();
+        helper.addNewLocation(
+                location.getId(),
+                location.getLat(),
+                location.getLng(),
+                location.getName());
+
+        return Response
+                .status(200)
+                .entity(location)
+                .build();
     }
 
+}

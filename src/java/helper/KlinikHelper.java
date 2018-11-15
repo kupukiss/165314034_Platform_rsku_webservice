@@ -9,6 +9,7 @@ import util.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import pojos.Klinik;
 
 public class KlinikHelper {
@@ -23,5 +24,14 @@ public class KlinikHelper {
         Query q = session.createQuery(query);
         List<Klinik> list = q.list();
         return list;
+    }
+
+    public void addNewKlinik(String idKlinik, String nama, String spesialis) {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Klinik klinik = new Klinik(idKlinik, nama, spesialis);
+        session.saveOrUpdate(klinik);
+        transaction.commit();
+        session.close();
     }
 }

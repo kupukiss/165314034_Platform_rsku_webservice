@@ -43,9 +43,6 @@ public class Dokter  implements java.io.Serializable {
         this.spesialis = spesialis;
     }
 
-
-
-
 }
 
 
