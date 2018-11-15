@@ -87,9 +87,7 @@ public class LokasiResource {
         Gson gson = new Gson();
         Location location = gson.fromJson(data, Location.class);
         LokasiHelper helper = new LokasiHelper();
-        helper.addNewLocation(
-                location.getId(),
-                location.getLat(),
+        helper.addNewLocation(location.getLat(),
                 location.getLng(),
                 location.getName());
 

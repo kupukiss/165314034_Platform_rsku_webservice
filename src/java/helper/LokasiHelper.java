@@ -26,7 +26,7 @@ public class LokasiHelper {
         return list;
     }
     
-    public void addNewLocation(Long id, double lat, double lng, String name) {
+    public void addNewLocation(double lat, double lng, String name) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         Location location = new Location(lat, lng, name);

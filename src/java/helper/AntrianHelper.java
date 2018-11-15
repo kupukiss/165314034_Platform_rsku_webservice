@@ -27,7 +27,7 @@ public class AntrianHelper {
         return list;
     }
     
-    public void addNewAntrian(long id, Date tanggal, String noRm, String nama, String alamat, String namaKlinik) {
+    public void addNewAntrian(Date tanggal, String noRm, String nama, String alamat, String namaKlinik) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         Antrian antrian = new Antrian(tanggal, noRm, nama, alamat, namaKlinik);

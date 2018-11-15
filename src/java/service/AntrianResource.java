@@ -87,9 +87,7 @@ public class AntrianResource {
         Gson gson = new Gson();
         Antrian antrian = gson.fromJson(data, Antrian.class);
         AntrianHelper helper = new AntrianHelper();
-        helper.addNewAntrian(
-                antrian.getId(),
-                antrian.getTanggal(),
+        helper.addNewAntrian(antrian.getTanggal(),
                 antrian.getNoRm(),
                 antrian.getNama(),
                 antrian.getAlamat(),

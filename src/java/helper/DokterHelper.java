@@ -26,7 +26,7 @@ public class DokterHelper {
         return list;
     }
     
-    public void addNewDokter(int id, String nama, String spesialis) {
+    public void addNewDokter(String nama, String spesialis) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         Dokter dokter = new Dokter(nama, spesialis);
